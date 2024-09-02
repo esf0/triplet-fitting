@@ -1,4 +1,4 @@
-# Conversion Triple Fit
+# Triplet Fitting
 
 This repository provides tools for fitting models to datasets using triplet data structures. It includes integration with MATLAB for specific computational tasks.
 
