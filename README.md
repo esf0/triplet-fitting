@@ -51,3 +51,36 @@ To fit models, use the `fit_all` function from the `triplet_fitting.fit` module.
 - matplotlib
 - seaborn
 - plotly
+- hpcom
+
+### Citations
+
+#### Citation for BRMLtoolkit
+
+This code uses the BRMLtoolkit from the book *Bayesian Reasoning and Machine Learning* by David Barber. The book is available in hardcopy from Cambridge University Press. The publishers have kindly agreed to allow the online version to remain freely accessible.
+
+If you wish to cite the book, please use the following BibTeX citation:
+
+```bibtex
+@BOOK{barberBRML2012,
+author = {Barber, D.},
+title= {{Bayesian Reasoning and Machine Learning}},
+publisher = {{Cambridge University Press}},
+year = 2012}
+```
+
+#### Citation for This Code
+
+If you wish to cite this code, please use the following BibTeX citation:
+
+```bibtex
+@software{sedov_triplet_fitting_2024,
+  author       = {Sedov, E.},
+  title        = {Triplet Fitting},
+  version      = {0.1.1},
+  year         = 2024,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.13628611},
+  url          = {https://doi.org/10.5281/zenodo.13628611}
+}
+```
