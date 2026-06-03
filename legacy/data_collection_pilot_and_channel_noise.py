@@ -25,6 +25,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
+from pathlib import Path
+
 # Import of necessary packages
 import tensorflow as tf  # tensorflow used for GPU memory allocation
 import pandas as pd  # pandas used for data storage
@@ -49,13 +51,16 @@ import scipy as sp
 from math import ceil
 
 # Directory with data files for Linux and Windows
-# data_dir = "/home/username/data/"
+data_dir = "/home/esf0/data/errorstat_channel_noise/"
 # data_dir = 'C:/Users/username/data/'
-data_dir = 'C:/Users/190243539/PycharmProjects/nn_essential/benchmark/data/errorstat_channel_noise/'
-
+# data_dir = 'C:/Users/190243539/PycharmProjects/nn_essential/benchmark/data/errorstat_channel_noise/'
+data_dir_path = Path(data_dir)
+if not data_dir_path.exists():
+    data_dir_path.mkdir(parents=True, exist_ok=True)
 
 # Name of the job to store data for different parameters
-job_name = 'errorstat_onepol_pilot_channel_noise_2'
+# job_name = 'errorstat_onepol_pilot_channel_noise_2'
+job_name = 'test'
 
 # System parameters
 GPU_MEM_LIMIT = 1024 * 7  # 6 GB of GPU memory is allocated
@@ -73,6 +78,7 @@ downsampling_rate = 1  # downsampling rate
 # p_ave_dbm_list = [5, 6, 7, 8]  # list of average power values in dBm
 # p_ave_dbm_list = [-1.5, -1.4, -1.3, -1.25, -1.2, -1.1, 1.1, 1.2, 1.25, 1.3, 1.4, 1.5]  # list of average power values in dBm
 p_ave_dbm_list = [-1.5, -1.25, 1.25, 1.5]  # list of average power values in dBm
+p_ave_dbm_list = [1.0]  # list of average power values in dBm
 
 # Channel parameters
 z_span = 80  # span length in km
@@ -85,7 +91,7 @@ dispersion_parameter = 16.8  # dispersion parameter in ps/nm/km
 dz = 1  # step size in km
 
 # Simulation parameters
-n_runs = 2 ** 7  # number of runs for each parameter set
+n_runs = 2 ** 0  # number of runs for each parameter set
 verbose = 0  # verbose level. 0 - no print, 3 - print all system logs
 # seed = 'fixed'  # seed for random number generator. 'time' - use current time, 'fixed' - fixed seed
 channels_type = 'middle'  # type for which of WDM channels all metrics will be calculated.
@@ -164,8 +170,8 @@ def magic(wdm, channel, channel_wo_noise):
 
     # generate signal (one or two polarisations)
     # signal contains one or two elements which is x and y polarisations
-    signal, wdm_info = generate_wdm_new(wdm, bits=None, points=([points_gen], [points_gen]), ft_filter_values=None)
-    # signal, wdm_info = generate_wdm_new(wdm, bits=None, points=None, ft_filter_values=None)
+    # signal, wdm_info = generate_wdm_new(wdm, bits=None, points=([points_gen], [points_gen]), ft_filter_values=None)
+    signal, wdm_info = generate_wdm_new(wdm, bits=None, points=None, ft_filter_values=None)
 
     # same as signal. points_orig[0] contains points for x polarisation, points_orig[1] for y polarisation (if exist)
     points_orig = wdm_info['points']
